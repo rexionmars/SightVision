@@ -1,6 +1,6 @@
-from SightVision.Utils import stackImages, cornerRect, findContours,\
+from sightvision.Utils import stackImages, cornerRect, findContours,\
     overlayPNG, rotateImage, putTextRect
-from SightVision.ColorModule import ColorFinder
-from SightVision.FPS import FPS
-from SightVision.PIDModule import PID
-from SightVision.PlotModule import LivePlot
+from sightvision.ColorModule import ColorFinder
+from sightvision.FPS import FPS
+from sightvision.PIDModule import PID
+from sightvision.PlotModule import LivePlot
