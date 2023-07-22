@@ -31,7 +31,7 @@ While not strictly necessary, it is a good practice to create a virtual environm
 ## Step 2: Installation via pip
 Now that you have Python set up, let's install the SightVision library via pip. Open a terminal or command prompt and execute the following command:
 ```sh
-pip install SightVision
+pip install sightvision
 ```
 Pip will start downloading the necessary files and installing the library. Please wait until the installation is successfully completed.
 
@@ -49,9 +49,29 @@ Running the above code will import the SightVision library, and if there are no 
 ## Step 4: Using the SightVision Library
 
 Now that the library is installed, you can start exploring its functionalities in your image processing and computer vision projects. Make sure to read the official SightVision documentation for detailed information on how to use each feature it offers.
-**Checkout the examples**
+<br>**Checkout more examples**: [Usage](EXAMPLES.md)
+#### FaceDetector
+```python
+import sightvision
+import cv2
 
-## Build-in Modules 🔍
+cap = cv2.VideoCapture(0)
+detector = sightvision.FaceDetector()
+
+while True:
+    success, frame = cap.read()
+    frame, bboxs = detector.findFaces(frame)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        print("Exiting...")
+        break
+
+    cv2.imshow("Face detector", frame)
+    cv2.waitKey(1)
+```
+
+## Available Modules 🔍
+[Complete documentarion](LICENSE.txt)
 - [x] Real-time Face Detection
 - [X] FPS
 - [x] FaceMash
