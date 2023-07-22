@@ -7,9 +7,8 @@
 SightVision is a powerful Computer Vision library that provides various methods for face detection, hand detection, and other related functionalities. With SightVision, you can effortlessly integrate image analysis capabilities into your projects and applications.
 ## Get Started
 
-1. [Install](#Install)
-2. [Uso](#uso)
-3. [API](#api)
+1. [Install](#install)
+2. [Using the SightVision Library](#using)
 4. [Exemplos](#exemplos)
 5. [Contribuição](#contribuição)
 6. [Licença](#licença)
