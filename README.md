@@ -8,7 +8,7 @@ SightVision is a powerful Computer Vision library that provides various methods 
 ## Get Started
 
 1. [Install Guide](#install)
-2. [Using the SightVision Library](#using-the-SightVision-Library)
+2. [Using the SightVision Library](#available-modules)
 5. [Contribuição](#contribuição)
 6. [Licença](LICENSE.txt)
 
