@@ -6,7 +6,7 @@
 
 This software is in the early stages of development and currently does not have any documentation or demonstration of its usage. Please stay tuned for more information as the project progresses.
 
-<br>Check the results at: https://github.com/rexionmars/liver-heart/tree/master/xresults
+
 
 ## Build-in Modules 🔍
 - [x] Real-time Face Detection
