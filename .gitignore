@@ -4,3 +4,4 @@ venv
 sightvision.egg-info
 setup.cfg
 setup.py
+tests
