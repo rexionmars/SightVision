@@ -7,12 +7,10 @@
 SightVision is a powerful Computer Vision library that provides various methods for face detection, hand detection, and other related functionalities. With SightVision, you can effortlessly integrate image analysis capabilities into your projects and applications.
 ## Get Started
 
-1. [Install](#install)
-2. [Using the SightVision Library](#using)
-4. [Exemplos](#exemplos)
+1. [Install](##install)
+2. [Using the SightVision Library](##using-the-SightVision-Library)
 5. [Contribuição](#contribuição)
-6. [Licença](#licença)
-7. [Minha Ancora](#minha-ancora)
+6. [Licença](LICENSE.txt)
 
 ## Installation of the SightVision library via pip
 The SightVision library is a powerful image processing and computer vision tool that enables object detection and analysis, face detection, and other features in images and videos. To make use of all the capabilities of SightVision in your project, follow the steps below to install it via pip.
@@ -80,7 +78,6 @@ while True:
 - [x] Pose Estimation
 - [x] Serial Module
 
-# Minha Ancora
 
 ## Sponsor the project
 If you find this project useful and would like to support its ongoing development, consider becoming a sponsor. You can make a one-time or recurring donation and help keep this project alive.
