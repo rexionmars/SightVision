@@ -2,3 +2,5 @@ dist
 venv
 .idea
 sightvision.egg-info
+setup.cfg
+setup.py
