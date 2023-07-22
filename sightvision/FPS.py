@@ -10,7 +10,7 @@ class FPS:
     def __init__(self):
         self.pTime = time.time()
 
-    def update(self, frame=None, pos=(20, 50), color=(22, 75, 203), scale=2, thickness=):
+    def update(self, frame=None, pos=(20, 50), color=(22, 75, 203), scale=2, thickness=1):
         """
         Update the frame rate
         :param frame: Frame to display on, can be left blank if only fps value required
