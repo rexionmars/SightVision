@@ -4,9 +4,52 @@
 </div>
 <img src="git-images/sightvision.jpg" alt="Snake logo">
 
-This software is in the early stages of development and currently does not have any documentation or demonstration of its usage. Please stay tuned for more information as the project progresses.
+SightVision is a powerful Computer Vision library that provides various methods for face detection, hand detection, and other related functionalities. With SightVision, you can effortlessly integrate image analysis capabilities into your projects and applications.
+## Get Started
 
+1. [Install](#Install)
+2. [Uso](#uso)
+3. [API](#api)
+4. [Exemplos](#exemplos)
+5. [Contribuição](#contribuição)
+6. [Licença](#licença)
 
+## Installation of the SightVision library via pip
+The SightVision library is a powerful image processing and computer vision tool that enables object detection and analysis, face detection, and other features in images and videos. To make use of all the capabilities of SightVision in your project, follow the steps below to install it via pip.
+
+## Requirements
+Before starting the installation, please ensure that you meet the following requirements:
+- [x] Python: Make sure you have Python installed on your system. SightVision requires Python to run, and it is recommended to use Python 3.x.
+- [x] pip: Check if you have pip installed. Pip is the package manager for Python and is needed to install SightVision and its dependencies.
+- [x] Operating System: SightVision is compatible with various operating systems, including Windows, macOS, and Linux. Ensure that you are using a supported operating system.
+- [x] Hardware: Depending on the specific tasks and models you plan to use with SightVision, you might need sufficient computational resources, such as CPU and GPU capabilities.
+
+## Step 1: Set up a Virtual Environment (optional)
+
+While not strictly necessary, it is a good practice to create a virtual environment before installing new libraries on your system. This will help prevent dependency conflicts with other projects.
+
+## Step 2: Installation via pip
+Now that you have Python set up, let's install the SightVision library via pip. Open a terminal or command prompt and execute the following command:
+```sh
+pip install SightVision
+```
+Pip will start downloading the necessary files and installing the library. Please wait until the installation is successfully completed.
+
+## Step 3: Verify the Installation
+
+To ensure that the installation was successful, you can check if the SightVision library is accessible in your Python environment. Simply open a Python interpreter or a Jupyter Notebook and type the following:
+```python
+import sightvision
+
+# If there are no import errors, the library is installed successfully.
+print("SightVision library is accessible.")
+```
+Running the above code will import the SightVision library, and if there are no import errors, it confirms that the installation was successful. You are now ready to utilize the SightVision library in your Python projects and take advantage of its image processing and computer vision functionalities. Happy coding!
+
+## Step 4: Using the SightVision Library
+
+Now that the library is installed, you can start exploring its functionalities in your image processing and computer vision projects. Make sure to read the official SightVision documentation for detailed information on how to use each feature it offers.
+**Checkout the examples**
 
 ## Build-in Modules 🔍
 - [x] Real-time Face Detection
