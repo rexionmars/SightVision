@@ -8,8 +8,9 @@ SightVision is a powerful Computer Vision library that provides various methods 
 ## Get Started
 1. [Install Guide](#install-guide)
 2. [Using the SightVision Library](#use)
-3. [Contributing](CONTRIBUTING.md)
-4. [License](LICENSE.md)
+3. [Available Modules](#module)
+4. [Contributing](CONTRIBUTING.md)
+5. [License](LICENSE.md)
 
 ## Installation of the SightVision library via pip
 The SightVision library is a powerful image processing and computer vision tool that enables object detection and analysis, face detection, and other features in images and videos. To make use of all the capabilities of SightVision in your project, follow the steps below to install it via pip.
@@ -68,7 +69,8 @@ while True:
     cv2.waitKey(1)
 ```
 
-## Available Modules 🔍
+<h2><a id="module">Available Modules 🧩</a></h2>
+
 [Complete documentarion](https://github.com/rexionmars/SightVision/wiki)
 - [x] Real-time Face Detection
 - [X] FPS
@@ -77,6 +79,12 @@ while True:
 - [x] PID Module
 - [x] Pose Estimation
 - [x] Serial Module
+- [x] Face Mesh
+- [x] Plot
+- [x] Selfie Segmentations
+- [x] Hand Tracking
+- [x] Classification
+- [x] Color Detection
 
 
 ## Sponsor the project
