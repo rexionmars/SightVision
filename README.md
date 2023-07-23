@@ -48,8 +48,8 @@ Running the above code will import the SightVision library, and if there are no 
 
 
 Now that the library is installed, you can start exploring its functionalities in your image processing and computer vision projects. Make sure to read the official SightVision documentation for detailed information on how to use each feature it offers.
-<br>**Checkout more examples**: [Usage](EXAMPLES.md)
-#### FaceDetector
+<br>**Checkout more examples**: [Complete documentarion](https://github.com/rexionmars/SightVision/wiki)
+#### Face Detection module
 ```python
 import sightvision
 import cv2
@@ -61,6 +61,7 @@ while True:
     success, frame = cap.read()
     frame, bboxs = detector.findFaces(frame)
 
+    # Exit the application if the `q` key is pressed
     if cv2.waitKey(1) & 0xFF == ord('q'):
         print("Exiting...")
         break
