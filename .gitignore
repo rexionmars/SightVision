@@ -1,7 +1,12 @@
 dist
+__pycache__
 venv
 .idea
 sightvision.egg-info
 setup.cfg
 setup.py
 tests
+sightvision/assets
+.flake8
+.pre-commit-config.yaml
+poetry.lock
