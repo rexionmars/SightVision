@@ -2,7 +2,7 @@
   <h1 align=center>SightVision</h1>
   <p align=center>Computer vision package that makes its easy to run Image processing and AI functions. At the core it uses OpenCV and Mediapipe libraries.</p>
 </div>
-<img src="git-images/sightvision.jpg" alt="Snake logo">
+<img src=".github/img/sightvision.jpg" alt="Snake logo">
 
 SightVision is a powerful Computer Vision library that provides various methods for face detection, hand detection, and other related functionalities. With SightVision, you can effortlessly integrate image analysis capabilities into your projects and applications.
 ## Get Started
