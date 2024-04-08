@@ -10,3 +10,4 @@ sightvision/assets
 .flake8
 .pre-commit-config.yaml
 poetry.lock
+.venv

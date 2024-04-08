@@ -33,7 +33,7 @@ class Classifier:
         else:
             print("No Labels Found")
 
-    def getPrediction(self, img, draw= True, pos=(50, 50), scale=2, color = (0,255,0)):
+    def getPrediction(self, img, draw=True, pos=(50, 50), scale=2, color=(0, 255, 0)):
         # resize the image to a 224x224 with the same strategy as in TM2:
         imgS = cv2.resize(img, (224, 224))
         # turn the image into a numpy array
@@ -49,11 +49,10 @@ class Classifier:
         indexVal = np.argmax(prediction)
 
         if draw and self.labels_path:
-            cv2.putText(img, str(self.list_labels[indexVal]),
-                        pos, cv2.FONT_HERSHEY_COMPLEX, scale, color, 2)
+            cv2.putText(img, str(self.list_labels[indexVal]), pos, cv2.FONT_HERSHEY_COMPLEX, scale,
+                        color, 2)
 
         return list(prediction[0]), indexVal
-
 
 
 def main():

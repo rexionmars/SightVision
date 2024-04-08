@@ -6,7 +6,7 @@ import cv2
 import mediapipe as mp
 
 import config
-from Utils import stackImages
+from sightvision.utils.basics import stackImages
 
 
 class FaceDetector:
