@@ -3,76 +3,96 @@ import numpy as np
 import copy
 
 
-def stackImages(_imgList, cols, scale):
+def stack_images(_image_list, cols, scale):
     """
-    Stack Images together to display in a single window
-    :param _imgList: list of images to stack
-    :param cols: the num of img in a row
-    :param scale: bigger~1+ ans smaller~1-
-    :return: Stacked Image
+    Stack a list of images horizontally and vertically to create a grid-like arrangement.
+
+    Args:
+        _image_list (list): A list of images to be stacked.
+        cols (int): The number of columns in the grid.
+        scale (float): The scale factor to resize the images.
+
+    Returns:
+        numpy.ndarray: The stacked image grid.
     """
-    imgList = copy.deepcopy(_imgList)
+    image_list = copy.deepcopy(_image_list)
 
-    # make the array full by adding blank img, otherwise the openCV can't work
-    totalImages = len(imgList)
-    rows = totalImages // cols if totalImages // cols * cols == totalImages else totalImages // cols + 1
-    blankImages = cols * rows - totalImages
+    # Make the array full by adding blank img, otherwise the openCV can't work
+    total_images = len(image_list)
+    rows = total_images // cols if total_images // cols * cols == total_images else total_images // cols + 1
+    blank_images = cols * rows - total_images
 
-    width = imgList[0].shape[1]
-    height = imgList[0].shape[0]
-    imgBlank = np.zeros((height, width, 3), np.uint8)
-    imgList.extend([imgBlank] * blankImages)
+    width = image_list[0].shape[1]
+    height = image_list[0].shape[0]
 
-    # resize the images
+    # Add blank images
+    image_blank = np.zeros((height, width, 3), np.uint8)
+    image_list.extend([image_blank] * blank_images)
+
+    # Resize the images
     for i in range(cols * rows):
-        imgList[i] = cv2.resize(imgList[i], (0, 0), None, scale, scale)
-        if len(imgList[i].shape) == 2:
-            imgList[i] = cv2.cvtColor(imgList[i], cv2.COLOR_GRAY2BGR)
+        image_list[i] = cv2.resize(image_list[i], (0, 0), None, scale, scale)
+        if len(image_list[i].shape) == 2:
+            image_list[i] = cv2.cvtColor(image_list[i], cv2.COLOR_GRAY2BGR)
 
-    # put the images in a board
-    hor = [imgBlank] * rows
+    # Put the images in a board
+    horizontal = [image_blank] * rows
     for y in range(rows):
         line = []
         for x in range(cols):
-            line.append(imgList[y * cols + x])
-        hor[y] = np.hstack(line)
-    ver = np.vstack(hor)
-    return ver
+            line.append(image_list[y * cols + x])
+        horizontal[y] = np.hstack(line)
+
+    vertical = np.vstack(horizontal)
+
+    return vertical
 
 
-def cornerRect(img, bbox, l=30, t=5, rt=1,
-               colorR=(255, 0, 255), colorC=(0, 255, 0)):
+def rounded_rectangle(img,
+                      bbox,
+                      lenght_of_corner=30,
+                      thickness_of_line=5,
+                      radius_corner=1,
+                      color_rectangle=(255, 0, 255),
+                      color_circle=(0, 255, 0)):
     """
-    :param img: Image to draw on.
-    :param bbox: Bounding box [x, y, w, h]
-    :param l: length of the corner line
-    :param t: thickness of the corner line
-    :param rt: thickness of the rectangle
-    :param colorR: Color of the Rectangle
-    :param colorC: Color of the Corners
-    :return:
+    Draws a rounded rectangle on the image
+    Args:
+        img: Image on which we want to draw
+        bbox: Bounding Box of the rectangle
+        lenght_of_corner: Length of the corner lines
+        thickness_of_line: Thickness of the lines
+        radius_corner: Radius of the corner
+        color_rectangle: Color of the rectangle
+        color_circle: Color of the corner circles
+    Returns:
+        Image with rounded rectangle
     """
     x, y, w, h = bbox
     x1, y1 = x + w, y + h
-    if rt != 0:
-        cv2.rectangle(img, bbox, colorR, rt)
+    if radius_corner != 0:
+        cv2.rectangle(img, bbox, color_rectangle, radius_corner)
+
     # Top Left  x,y
-    cv2.line(img, (x, y), (x + l, y), colorC, t)
-    cv2.line(img, (x, y), (x, y + l), colorC, t)
+    cv2.line(img, (x, y), (x + lenght_of_corner, y), color_circle, thickness_of_line)
+    cv2.line(img, (x, y), (x, y + lenght_of_corner), color_circle, thickness_of_line)
+
     # Top Right  x1,y
-    cv2.line(img, (x1, y), (x1 - l, y), colorC, t)
-    cv2.line(img, (x1, y), (x1, y + l), colorC, t)
+    cv2.line(img, (x1, y), (x1 - lenght_of_corner, y), color_circle, thickness_of_line)
+    cv2.line(img, (x1, y), (x1, y + lenght_of_corner), color_circle, thickness_of_line)
+
     # Bottom Left  x,y1
-    cv2.line(img, (x, y1), (x + l, y1), colorC, t)
-    cv2.line(img, (x, y1), (x, y1 - l), colorC, t)
+    cv2.line(img, (x, y1), (x + lenght_of_corner, y1), color_circle, thickness_of_line)
+    cv2.line(img, (x, y1), (x, y1 - l), color_circle, thickness_of_line)
+
     # Bottom Right  x1,y1
-    cv2.line(img, (x1, y1), (x1 - l, y1), colorC, t)
-    cv2.line(img, (x1, y1), (x1, y1 - l), colorC, t)
+    cv2.line(img, (x1, y1), (x1 - lenght_of_corner, y1), color_circle, thickness_of_line)
+    cv2.line(img, (x1, y1), (x1, y1 - lenght_of_corner), color_circle, thickness_of_line)
 
     return img
 
 
-def findContours(img, imgPre, minArea=1000, sort=True, filter=0, drawCon=True, c=(255, 0, 0)):
+def find_contours(img, imgPre, minArea=1000, sort=True, filter=0, drawCon=True, c=(255, 0, 0)):
     """
     Finds Contours in an image
     :param img: Image on which we want to draw
@@ -94,7 +114,8 @@ def findContours(img, imgPre, minArea=1000, sort=True, filter=0, drawCon=True, c
             approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
             # print(len(approx))
             if len(approx) == filter or filter == 0:
-                if drawCon: cv2.drawContours(imgContours, cnt, -1, c, 3)
+                if drawCon:
+                    cv2.drawContours(imgContours, cnt, -1, c, 3)
                 x, y, w, h = cv2.boundingRect(approx)
                 cx, cy = x + (w // 2), y + (h // 2)
                 cv2.rectangle(imgContours, (x, y), (x + w, y + h), c, 2)
@@ -136,9 +157,17 @@ def rotateImage(img, angle, scale=1):
     return img
 
 
-def putTextRect(img, text, pos, scale=3, thickness=3, colorT=(255, 255, 255),
-                colorR=(255, 0, 255), font=cv2.FONT_HERSHEY_PLAIN,
-                offset=10, border=None, colorB=(0, 255, 0)):
+def putTextRect(img,
+                text,
+                pos,
+                scale=3,
+                thickness=3,
+                colorT=(255, 255, 255),
+                colorR=(255, 0, 255),
+                font=cv2.FONT_HERSHEY_PLAIN,
+                offset=10,
+                border=None,
+                colorB=(0, 255, 0)):
     """
     Creates Text with Rectangle Background
     :param img: Image to put text rect on
@@ -173,8 +202,8 @@ def main():
         success, img = cap.read()
         img, bbox = putTextRect(img, "CVZone", [50, 50], 2, 2, offset=10, border=5)
         imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        imgList = [img, img, imgGray, img, imgGray]
-        imgStacked = stackImages(imgList, 2, 0.5)
+        image_list = [img, img, imgGray, img, imgGray]
+        imgStacked = stackImages(image_list, 2, 0.5)
 
         cv2.imshow("stackedImg", imgStacked)
         cv2.waitKey(1)
