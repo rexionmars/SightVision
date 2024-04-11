@@ -17,9 +17,6 @@ The SightVision library is a powerful image processing and computer vision tool 
 
 ## Requirements
 Before starting the installation, please ensure that you meet the following requirements:
-- [x] Python: Make sure you have Python installed on your system. SightVision requires Python to run, and it is recommended to use Python 3.x.
-- [x] pip: Check if you have pip installed. Pip is the package manager for Python and is needed to install SightVision and its dependencies.
-- [x] Operating System: SightVision is compatible with various operating systems, including Windows, macOS, and Linux. Ensure that you are using a supported operating system.
 - [x] Hardware: Depending on the specific tasks and models you plan to use with SightVision, you might need sufficient computational resources, such as CPU and GPU capabilities.
 
 ## Step 1: Set up a Virtual Environment (optional)
