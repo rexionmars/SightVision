@@ -2,7 +2,8 @@ import cv2
 import mediapipe as mp
 import math
 
-from ..utils.basics import rounded_rectangle
+from sightvision.utils.basics import rounded_rectangle
+from sightvision.configuration.constants import _RECTANGLE_DEFAULT_COLOR, _LINE_DEFAULT_SIZE
 
 
 class HandDetector:
@@ -36,7 +37,12 @@ class HandDetector:
         self.fingers = []
         self.lm_list = []
 
-    def find_hands(self, img, draw=True, flip_type=True, color=(25, 220, 255), line_size=1):
+    def find_hands(self,
+                   img,
+                   draw=True,
+                   flip_type=True,
+                   color=_RECTANGLE_DEFAULT_COLOR,
+                   line_size=_LINE_DEFAULT_SIZE):
         """
         Finds hands in a BGR image.
         
