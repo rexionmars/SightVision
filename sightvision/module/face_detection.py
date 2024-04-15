@@ -80,14 +80,18 @@ class FaceDetector:
 
         # Draw acuracy in external box
         if external_info == True:
-            cv2.line(frame, (x, y), (x - 30, y - 30), color, thickness)
-            cv2.rectangle(frame, (x - 145, y - 50, 115, 20), color, -1)
+            cv2.line(frame, (x, y), (x - 15, y - 15), color, thickness)
+            if detection.score[0] > 0.85:
+                cv2.rectangle(frame, (x - 100, y - 30, 85, 15), color, -1)
+            else:
+                cv2.rectangle(frame, (x - 100, y - 30, 85, 15), (0, 0, 255), -1)  # RGB, BGR
+
             cv2.putText(
                 frame,
                 f"{int(detection.score[0] * 100)}% Acuracy",
-                (bbox[0] - 140, bbox[1] - 35),
+                (bbox[0] - 100, bbox[1] - 20),
                 cv2.FONT_HERSHEY_SIMPLEX,
-                0.5,
+                0.4,
                 (0, 0, 0),
                 1,
             )
@@ -127,7 +131,6 @@ class FaceDetector:
     def find_faces(self,
                    frame,
                    view_mode=1,
-                   draw=True,
                    color=(25, 220, 255),
                    thickness=1,
                    external_info=False,
@@ -173,8 +176,7 @@ class FaceDetector:
                 }
                 bboxs.append(bbox_info)
 
-                if draw:
-                    self.draw_detections(frame, bbox, x, y, cx, cy, detection, view_mode, color, thickness,
-                                         external_info, internal_info, debug)
+                self.draw_detections(frame, bbox, x, y, cx, cy, detection, view_mode, color, thickness,
+                                     external_info, internal_info, debug)
 
         return frame, bboxs
