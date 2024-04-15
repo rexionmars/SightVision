@@ -50,11 +50,11 @@ def stack_images(_image_list, cols, scale):
 
 def rounded_rectangle(img,
                       bbox,
-                      lenght_of_corner=30,
-                      thickness_of_line=5,
-                      radius_corner=1,
-                      color_rectangle=(255, 0, 255),
-                      color_circle=(0, 255, 0)):
+                      lenght_of_corner=25,
+                      thickness_of_line=1,
+                      radius_corner=3,
+                      color_rectangle=(25, 220, 255),
+                      color_circle=(25, 220, 255)):
     """
     Draws a rounded rectangle on the image
     Args:
@@ -83,7 +83,7 @@ def rounded_rectangle(img,
 
     # Bottom Left  x,y1
     cv2.line(img, (x, y1), (x + lenght_of_corner, y1), color_circle, thickness_of_line)
-    cv2.line(img, (x, y1), (x, y1 - l), color_circle, thickness_of_line)
+    cv2.line(img, (x, y1), (x, y1 - lenght_of_corner), color_circle, thickness_of_line)
 
     # Bottom Right  x1,y1
     cv2.line(img, (x1, y1), (x1 - lenght_of_corner, y1), color_circle, thickness_of_line)
@@ -134,11 +134,11 @@ def overlayPNG(imgBack, imgFront, pos=[0, 0]):
     *_, mask = cv2.split(imgFront)
     maskBGRA = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGRA)
     maskBGR = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
-    imgRGBA = cv2.bitwise_and(imgFront, maskBGRA)
-    imgRGB = cv2.cvtColor(imgRGBA, cv2.COLOR_BGRA2BGR)
+    img_rgbA = cv2.bitwise_and(imgFront, maskBGRA)
+    img_rgb = cv2.cvtColor(img_rgbA, cv2.COLOR_BGRA2BGR)
 
     imgMaskFull = np.zeros((hb, wb, cb), np.uint8)
-    imgMaskFull[pos[1]:hf + pos[1], pos[0]:wf + pos[0], :] = imgRGB
+    imgMaskFull[pos[1]:hf + pos[1], pos[0]:wf + pos[0], :] = img_rgb
     imgMaskFull2 = np.ones((hb, wb, cb), np.uint8) * 255
     maskBGRInv = cv2.bitwise_not(maskBGR)
     imgMaskFull2[pos[1]:hf + pos[1], pos[0]:wf + pos[0], :] = maskBGRInv
