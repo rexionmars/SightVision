@@ -48,17 +48,17 @@ Now that the library is installed, you can start exploring its functionalities i
 <br>**Checkout more examples**: [Complete documentarion](https://github.com/rexionmars/SightVision/wiki)
 #### Face Detection module
 ```python
-import sightvision
 import cv2
 
+from sightvision.module.face_detection import FaceDetector
+
 cap = cv2.VideoCapture(0)
-detector = sightvision.FaceDetector()
+detector = FaceDetector()
 
 while True:
     success, frame = cap.read()
-    frame, bboxs = detector.findFaces(frame)
+    frame, bboxs = detector.find_faces(frame, view_mode=1, external_info=True, debug=False)
 
-    # Exit the application if the `q` key is pressed
     if cv2.waitKey(1) & 0xFF == ord('q'):
         print("Exiting...")
         break
@@ -67,23 +67,60 @@ while True:
     cv2.waitKey(1)
 ```
 
-<h2><a id="module">Available Modules 🧩</a></h2>
 
-[Complete documentarion](https://github.com/rexionmars/SightVision/wiki)
+#### Hand Tracking Module
+```python
+import cv2
+from sightvision.module.hand_tracking import HandDetector
+
+
+cap = cv2.VideoCapture(0)
+detector = HandDetector(detection_confidence=0.8, max_hands=2)
+
+while True:
+    success, img = cap.read()
+    hands, img = detector.find_hands(img)
+
+    if hands:
+        # Hand 1
+        hand1 = hands[0]
+        lmList1 = hand1["lmList"]
+        bbox1 = hand1["bbox"]
+        centerPoint1 = hand1['center']
+        handType1 = hand1["type"]
+
+        fingers1 = detector.fingersUp(hand1)
+
+        if len(hands) == 2:
+            # Hand 2
+            hand2 = hands[1]
+            lmList2 = hand2["lmList"]
+            bbox2 = hand2["bbox"]
+            centerPoint2 = hand2['center']
+            handType2 = hand2["type"]
+
+            fingers2 = detector.fingersUp(hand2)
+
+            # Find distance
+            length, info, img = detector.find_distance(lmList1[8][0:2], lmList2[8][0:2], img)
+
+    cv2.imshow("Image", img)
+    cv2.waitKey(1)
+```
+
+<h2><a id="module">Available Modules</a></h2>
+
 - [x] Real-time Face Detection
-- [X] FPS
-- [x] FaceMash
-- [x] Classification Module
-- [x] PID Module
-- [x] Pose Estimation
-- [x] Serial Module
-- [x] Face Mesh
-- [x] Plot
-- [x] Selfie Segmentations
 - [x] Hand Tracking
-- [x] Classification
-- [x] Color Detection
+- [x] Pose Estimation
+- [x] Face Mesh
 
+<h2><a id="module">Available Utils Functions</a></h2>
+
+- [X] FPS
+- [x] PID Module
+- [x] Serial Module
+- [x] Plot
 
 ## Sponsor the project
 
