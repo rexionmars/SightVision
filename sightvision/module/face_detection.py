@@ -7,7 +7,8 @@ import mediapipe as mp
 
 from typing import Tuple, List, Dict, Any, Union, Optional
 
-from ..utils.basics import rounded_rectangle
+from sightvision.utils.basics import rounded_rectangle
+from sightvision.configuration.constants import _RECTANGLE_DEFAULT_COLOR
 
 
 class FaceDetector:
@@ -22,20 +23,20 @@ class FaceDetector:
         self.face_detection = self.media_pipe_face_Fetection.FaceDetection(self.min_detection_confidense)
 
     def draw_detections(
-            self,
-            frame: object,
-            bbox: Tuple[int, int, int, int],
-            x: int,
-            y: int,
-            cx: int,
-            cy: int,
-            detection: object,
-            view_mode: int,
-            color=(25, 220, 255),
-            thickness=1,
-            external_info=False,
-            internal_info=False,
-            debug=False,
+        self,
+        frame: object,
+        bbox: Tuple[int, int, int, int],
+        x: int,
+        y: int,
+        cx: int,
+        cy: int,
+        detection: object,
+        view_mode: int,
+        color=_RECTANGLE_DEFAULT_COLOR,
+        thickness=1,
+        external_info=False,
+        internal_info=False,
+        debug=False,
     ):
         """
         Draws the detections on the frame based on the specified parameters.
@@ -131,7 +132,7 @@ class FaceDetector:
     def find_faces(self,
                    frame,
                    view_mode=1,
-                   color=(25, 220, 255),
+                   color=_RECTANGLE_DEFAULT_COLOR,
                    thickness=1,
                    external_info=False,
                    internal_info=False,
