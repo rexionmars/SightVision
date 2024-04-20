@@ -117,10 +117,9 @@ while True:
 
 <h2><a id="module">Available Utils Functions</a></h2>
 
-- [X] FPS
-- [x] PID Module
-- [x] Serial Module
-- [x] Plot
+- [X] Rounded Rectangle
+- [x] Overlay PNG
+- [x] Stack Images
 
 ## Sponsor the project
 
